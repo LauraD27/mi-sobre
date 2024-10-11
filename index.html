@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre de Carta</title>
+    <style>
+        body {
+            background-color: #fffacd; /* Color amarillo claro */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Altura completa de la ventana */
+            margin: 0; /* Eliminar márgenes */
+            flex-direction: column; /* Colocar el sobre y la imagen en columna */
+        }
+        #sobre {
+            width: 300px; /* Ancho del sobre */
+            height: 200px; /* Alto del sobre */
+            background-color: #8B4513; /* Color marrón */
+            border: 3px solid #7B3F00; /* Bordes más oscuros */
+            position: relative;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: opacity 0.3s ease; /* Animaciones */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px; /* Tamaño de la fuente */
+            color: white; /* Color del texto */
+        }
+        #sobre:before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background-color: #fff;
+            border: 3px solid #7B3F00;
+            border-bottom: none;
+            border-radius: 5px 5px 0 0;
+        }
+        #imagen {
+            display: none;
+            width: 500px; /* Cambia el tamaño de la imagen según necesites */
+            margin-top: 20px;
+            text-align: center; /* Centra la imagen */
+            opacity: 0; /* Comienza oculto */
+            transition: opacity 0.3s ease; /* Animación de aparición */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="sobre">Click</div>
+    <img id="imagen" src="https://i.ibb.co/sj2C4GY/imagen.jpg" alt="Imagen" />
+
+    <script>
+        document.getElementById('sobre').addEventListener('click', function() {
+            const img = document.getElementById('imagen');
+            this.style.opacity = '0'; // Desaparece el sobre
+            img.style.display = 'block'; // Muestra la imagen
+            img.style.opacity = '0'; // Comienza oculto
+            img.offsetHeight; // Forzar reflow
+            img.style.opacity = '1'; // Aparece la imagen
+            setTimeout(() => {
+                this.style.display = 'none'; // Elimina el sobre de la vista
+            }, 300); // Tiempo para que se complete la animación de desaparición
+        });
+    </script>
+
+</body>
+</html>
